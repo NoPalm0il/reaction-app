@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Router from '../core/Router';
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Hey</h1>
-      </div>
+      <Router />
     )
   }
 }
