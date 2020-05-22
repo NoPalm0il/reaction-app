@@ -4,13 +4,18 @@ import "./Home.css";
 import logo from "../../assets/logo.svg";
 
 export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ids: Array(9).fill(Math.random() * 100),
+    };
+  }
   render() {
     return (
-      <div className="home">
-        <Meme id={0} memage={logo} />
-        <Meme id={1} memage={logo} />
-        <Meme id={2} memage={logo} />
-        <Meme id={3} memage={logo} />
+      <div className="Home">
+        {this.state.ids.map((meme) => (
+          <Meme id={meme.id} memage={logo} />
+        ))}
       </div>
     );
   }
