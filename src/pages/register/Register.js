@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
+import './Register.css';
 
 export default class Register extends Component {
   render() {
     return (
-      <div className="register">
+      <div className="Register">
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -24,7 +25,7 @@ export default class Register extends Component {
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Become a memer
+            Become a Memer
           </Button>
         </Form>
       </div>
