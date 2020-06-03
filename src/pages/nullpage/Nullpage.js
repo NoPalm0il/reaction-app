@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './Nullpage.css';
 
 export default class Nullpage extends Component {
   render() {
     return (
-      <div>
+      <div className="Nullpage">
         <h1>404 Not found!!!</h1>
       </div>
     )
