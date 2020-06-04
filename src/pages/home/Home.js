@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ids: Array(9).fill(Math.random() * 100),
+      ids: Array(9).fill(0),
     };
   }
   render() {
