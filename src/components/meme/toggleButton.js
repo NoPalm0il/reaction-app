@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 
 export function ToggleButtonExample() {
-    const [radioValue, setRadioValue] = useState('1');
+  const [radioValue, setRadioValue] = useState('');
   
     const radios = [
       { name: 'Upvote', value: '1' },
