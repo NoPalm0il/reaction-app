@@ -1,26 +1,54 @@
 import React, { Component } from "react";
-import "./About.css";
 import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import "./About.css";
 
 class About extends Component {
   render() {
     return (
+      <CardDeck style={{backgroundColor:"#202020", padding:"100px"}}>
         <Card
-          style={{ width: "18rem", justifyContent: "center", marginLeft:"auto",
-                marginRight:"auto" }}
+          style={{
+            marginLeft: "320px",
+            marginRight: "50px",
+          }}
         >
-          <Card.Img variant="top" src="../../../murteira.jpeg" />
+          <Card.Img
+            variant="top"
+            src="../../../murteira.jpeg"
+            style={{ width: "auto", height: "auto" }}
+          />
           <Card.Body>
             <Card.Title>Tiago Murteira</Card.Title>
             <Card.Text>
-              Tiago Murteira, conhecido como "Pai Grande" na região geográfica
-              onde habita, é um estudante de Engenharia Informática
+              aluno nº21087
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
           </Card.Footer>
         </Card>
+
+        <Card
+          style={{
+            marginLeft: "50px",
+            marginRight: "320px",
+          }}
+        >
+          <Card.Img
+            variant="top"
+            src="../../../murteira.jpeg"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <Card.Body>
+            <Card.Title>João Ramos</Card.Title>
+            <Card.Text>
+              Colocar a fotografia do Ramos
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+          </Card.Footer>
+        </Card>
+      </CardDeck>
     );
   }
 }

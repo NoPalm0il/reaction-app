@@ -10,7 +10,13 @@ export default class NavbarComponent extends React.Component {
       <Navbar expand="sm" variant="dark" style={{ backgroundColor: "#303030" }}>
         <Container>
           <Nav>
-            <Nav.Link as={NavLink} exact to="/">
+            <Nav.Link
+              style={{ fontSize: "20px", paddingRight: "50px" }}
+              as={NavLink}
+              exact
+              to="/"
+            >
+              <img alt="React.ion" src="../../../logo192.png" height="35px" width="35px"></img>{" "}
               React.ion
             </Nav.Link>
           </Nav>
@@ -18,8 +24,6 @@ export default class NavbarComponent extends React.Component {
             <Nav.Link as={NavLink} exact to="/about">
               About
             </Nav.Link>
-          </Nav>
-          <Nav>
             {user ? (
               <NavDropdown title={user.username} alignRight>
                 <NavDropdown.Item onClick={() => logout()}>
