@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
+import {ToggleButtonExample} from "./toggleButton";
 
 export default class Meme extends Component {
   render() {
@@ -17,8 +18,7 @@ export default class Meme extends Component {
             <Card.Img variant="top" src={this.props.memage} />
           </Card.Body>
           <Card.Footer>
-            <Card.Subtitle>Upvote</Card.Subtitle>
-            <Card.Subtitle>FUckvote</Card.Subtitle>
+            <ToggleButtonExample />
           </Card.Footer>
         </Card>
         <br />
