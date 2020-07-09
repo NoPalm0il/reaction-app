@@ -9,7 +9,7 @@ class About extends Component {
       <CardDeck style={{backgroundColor:"#202020", padding:"100px"}}>
         <Card
           style={{
-            marginLeft: "320px",
+            marginLeft: "300px",
             marginRight: "50px",
           }}
         >
@@ -31,7 +31,7 @@ class About extends Component {
         <Card
           style={{
             marginLeft: "50px",
-            marginRight: "320px",
+            marginRight: "300px",
           }}
         >
           <Card.Img
