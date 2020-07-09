@@ -1,4 +1,4 @@
-const serverURL = "http://localhost:3000";
+const serverURL = "http://localhost:5000";
 
 export const apiRequest = (method, route, params) => {
   let currentUser = sessionStorage.getItem("user");
@@ -10,7 +10,8 @@ export const apiRequest = (method, route, params) => {
     fetch(serviceUrl, {
       method,
       headers: {
-        ...(params && params.jsonData && { "Content-Type": "application/json" }),
+        ...(params &&
+          params.jsonData && { "Content-Type": "application/json" }),
         ...(currentUser && { Authorization: JSON.parse(currentUser).token }),
       },
       ...(params && {
