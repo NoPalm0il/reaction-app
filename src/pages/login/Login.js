@@ -9,7 +9,7 @@ export default class Login extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { email: "admin@admin.adm", password: "123qweASD" };
+    this.state = { email: "admin@admin.adm", password: "admin" };
   }
 
   handleSubmit(evt) {
@@ -28,7 +28,7 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
-          <Form.Group controlId="formGroupEmail" bsSize="large">
+          <Form.Group controlId="formGroupEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
@@ -37,7 +37,7 @@ export default class Login extends Component {
               onChange={(evt) => this.setState({ email: evt.target.value })}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword" bsSize="large">
+          <Form.Group controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
