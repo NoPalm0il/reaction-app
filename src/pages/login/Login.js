@@ -9,7 +9,7 @@ export default class Login extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { email: "admin@admin.adm", password: "admin" };
+    this.state = { username: "admin", password: "admin" };
   }
 
   handleSubmit(evt) {
@@ -17,24 +17,24 @@ export default class Login extends Component {
     services.user
       .login(this.state)
       .then((data) => {
-        this.context.login({ email: this.state.email, ...data });
+        this.context.login({ username: this.state.username, ...data });
         this.props.history.push("/");
       })
       .catch((err) => {});
   }
 
   render() {
-    const { email, password } = this.state;
+    const { username, password } = this.state;
     return (
       <div className="Login">
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
-          <Form.Group controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group controlId="formGroupUsername">
+            <Form.Label>Username</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(evt) => this.setState({ email: evt.target.value })}
+              type=""
+              placeholder="Your username"
+              value={username}
+              onChange={(evt) => this.setState({ username: evt.target.value })}
             />
           </Form.Group>
           <Form.Group controlId="formGroupPassword">
