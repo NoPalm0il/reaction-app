@@ -6,49 +6,65 @@ import "./About.css";
 class About extends Component {
   render() {
     return (
-      <CardDeck style={{backgroundColor:"#202020", padding:"100px"}}>
-        <Card
-          style={{
-            marginLeft: "300px",
-            marginRight: "50px",
-          }}
-        >
-          <Card.Img
-            variant="top"
-            src="../../../murteira.jpeg"
-            style={{ width: "auto", height: "auto" }}
-          />
-          <Card.Body>
-            <Card.Title>Tiago Murteira</Card.Title>
-            <Card.Text>
-              aluno nº21087
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-          </Card.Footer>
-        </Card>
+      <div className="About">
+        <CardDeck style={{ backgroundColor: "#202020", padding: "100px" }}>
+          <Card
+            style={{
+              marginLeft: "520px",
+              marginRight: "64px",
+              height: "500px",
+            }}
+          >
+            <Card.Img
+              variant="top"
+              src="../../../murteira.jpeg"
+              style={{
+                width: "280px",
+                height: "380px",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
+            <Card.Body>
+              <Card.Title style={{ textAlign: "center" }}>
+                Tiago Murteira
+              </Card.Title>
+              <Card.Text style={{ textAlign: "center" }}>
+                aluno nº21087
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer></Card.Footer>
+          </Card>
 
-        <Card
-          style={{
-            marginLeft: "50px",
-            marginRight: "300px",
-          }}
-        >
-          <Card.Img
-            variant="top"
-            src="../../../murteira.jpeg"
-            style={{ width: "auto", height: "auto" }}
-          />
-          <Card.Body>
-            <Card.Title>João Ramos</Card.Title>
-            <Card.Text>
-              Colocar a fotografia do Ramos
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-          </Card.Footer>
-        </Card>
-      </CardDeck>
+          <Card
+            style={{
+              marginLeft: "64px",
+              marginRight: "520px",
+              height: "500px",
+            }}
+          >
+            <Card.Img
+              variant="top"
+              src="../../../ramos.jpg"
+              style={{
+                width: "280px",
+                height: "380px",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
+            <Card.Body>
+              <Card.Title style={{ textAlign: "center" }}>
+                João Ramos
+              </Card.Title>
+              <Card.Text style={{ textAlign: "center" }}>
+                aluno nº21397
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer></Card.Footer>
+          </Card>
+        </CardDeck>
+      </div>
     );
   }
 }
