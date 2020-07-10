@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import AuthContext from "../../configs/authContext";
 
 export default class NavbarComponent extends React.Component {
+  static contextType = AuthContext;
+
   render() {
     const { user, logout } = this.context;
 
