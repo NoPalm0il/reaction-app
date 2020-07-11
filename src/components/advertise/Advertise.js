@@ -6,10 +6,9 @@ class Advertise extends Component {
     return (
       <Card style={{backgroundColor:"#151515", marginLeft:"50px", marginTop:"150px"}}>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Advert</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Here we can put any type of ad of our choice, even with images. The main goal is to give the impression of real as much as possible
           </Card.Text>
         </Card.Body>
       </Card>
