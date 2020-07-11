@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import AuthContext from "../../configs/authContext";
 
 export default class NavbarComponent extends React.Component {
@@ -14,12 +14,18 @@ export default class NavbarComponent extends React.Component {
         <Container>
           <Nav>
             <Nav.Link
-              style={{ fontSize: "20px", paddingRight: "50px" }}
+              style={{ fontSize: "10", paddingRight: "50", color: "white" }}
               as={NavLink}
               exact
               to="/"
             >
-              <img alt="React.ion" src="../../../logo192.png" height="35px" width="35px"></img>{" "}
+              <img
+                alt="React.ion"
+                src="../../../logo192.png"
+                width="20"
+                height="20"
+                className="d-inline-block align-top"
+              ></img>{" "}
               React.ion
             </Nav.Link>
           </Nav>
@@ -28,11 +34,19 @@ export default class NavbarComponent extends React.Component {
               About
             </Nav.Link>
             {user ? (
-              <NavDropdown title={user.username} alignRight>
-                <NavDropdown.Item onClick={() => logout()}>
+              <>
+                <Nav.Link as={NavLink} to="/profile">
+                  {user.username}
+                </Nav.Link>
+                <Nav.Link
+                  as={NavLink}
+                  to="/"
+                  onClick={() => logout()}
+                  style={{ color: "white", border: "1px solid", borderRadius: "6px", backgroundColor: "#2F8AD7" }}
+                >
                   Logout
-                </NavDropdown.Item>
-              </NavDropdown>
+                </Nav.Link>
+              </>
             ) : (
               <>
                 <Nav.Item>
@@ -44,7 +58,7 @@ export default class NavbarComponent extends React.Component {
                   <Nav.Link
                     as={NavLink}
                     to="/register"
-                    style={{ border: "1px solid", borderRadius: "6px" }}
+                    style={{ color: "white", border: "1px solid", borderRadius: "6px", backgroundColor: "#2F8AD7" }}
                   >
                     Sign Up
                   </Nav.Link>

@@ -9,15 +9,18 @@ export default class Register extends Component {
     this.state = {
       username: "",
       email: "",
-      password: ""
+      password: "",
     };
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    services.user.register(this.state).then(() => {
-      this.props.history.push("/");
-    });
+    if (this.state.username !== "" || this.state.email !== "")
+      services.user.register(this.state).then(() => {
+        this.props.history.push("/");
+      });
+      else
+        console.log("insert user and email");
   }
 
   render() {
@@ -60,12 +63,9 @@ export default class Register extends Component {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-            />
+            <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Button variant="primary" type="submit" >
+          <Button variant="primary" type="submit">
             Become a Memer
           </Button>
         </Form>

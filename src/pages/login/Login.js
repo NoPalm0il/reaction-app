@@ -14,13 +14,15 @@ export default class Login extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    services.user
-      .login(this.state)
-      .then((data) => {
-        this.context.login({ username: this.state.username, ...data });
-        this.props.history.push("/");
-      })
-      .catch((err) => {});
+    if (this.state.username !== "")
+      services.user
+        .login(this.state)
+        .then((data) => {
+          this.context.login({ username: this.state.username, ...data });
+          this.props.history.push("/");
+        })
+        .catch((err) => {});
+    else console.log("insert username");
   }
 
   render() {
