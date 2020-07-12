@@ -1,5 +1,5 @@
 import React from "react";
-import Meme from "../../components/meme/Meme";
+import Meme from "../../components/meme/MemeComponent";
 import "./Home.css";
 import logo from "../../assets/logo.svg";
 
