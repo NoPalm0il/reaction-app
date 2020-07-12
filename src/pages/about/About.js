@@ -7,7 +7,7 @@ class About extends Component {
   render() {
     return (
       <div className="About">
-        <div class="jumbotron">
+        <div class="jumbotron" style={{paddingTop:"15px", paddingBottom:"15px", marginRight:"500px", marginLeft:"100px", alignItems:"center"}}>
           <h1 class="display-4">Contact Us!</h1>
           <p class="lead">
             This is a simple hero unit, a simple jumbotron-style component for
@@ -22,7 +22,6 @@ class About extends Component {
             Privacy
           </a>
         </div>
-
         <CardDeck style={{ backgroundColor: "#202020", padding: "100px" }}>
           <Card
             style={{
