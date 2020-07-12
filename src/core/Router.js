@@ -9,6 +9,7 @@ import Register from "../pages/register/Register";
 import About from "../pages/about/About";
 import Profile from "../pages/profile/Profile";
 import NullPage from "../pages/nullpage/Nullpage";
+import Privacy from "../pages/privacy/Privacy";
 
 export default class RouterComponent extends React.Component {
   render() {
@@ -22,6 +23,7 @@ export default class RouterComponent extends React.Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/about" component={About} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/privacy" component={Privacy} />
             <Route path="*" component={NullPage} />
           </Switch>
         </Router>
