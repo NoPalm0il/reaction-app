@@ -4,6 +4,7 @@ import memeService from "../../services/meme";
 
 export default class SubmitDialogComponent extends React.Component {
   toEdit = false;
+  currtime = new Date().toLocaleString();
 
   constructor(props) {
     super(props);
@@ -13,24 +14,39 @@ export default class SubmitDialogComponent extends React.Component {
 
   getFormState() {
     return this.toEdit
-      ? { ...this.props.meme, cover: null }
-      : { title: "", category: "", author: "", publish: 0, memage: null };
+      ? { ...this.props.meme, memage: null }
+      : {
+          title: "",
+          category: "",
+          author: "",
+          publish: 0,
+          memage: null,
+        };
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    const jsonData = (({ title, category, author, publish }) => ({ title, category, author, publish }))(
-      this.state
-    );
+    const jsonData = (({ title, category, author, publish }) => ({
+      title,
+      category,
+      author,
+      publish,
+    }))(this.state);
     if (this.toEdit) {
       const { _id, memage } = this.props.meme;
-      memeService.update(_id, jsonData).then(() => this.handleCoverSubmit({ ...jsonData, _id, memage }));
+      memeService
+        .update(_id, jsonData)
+        .then(() => this.handleMemageSubmit({ ...jsonData, _id, memage }));
     } else {
-      memeService.create(jsonData).then((result) => this.handleCoverSubmit({ ...jsonData, _id: result._id }));
+      memeService
+        .create(jsonData)
+        .then((result) =>
+          this.handleMemageSubmit({ ...jsonData, _id: result._id })
+        );
     }
   }
 
-  handleCoverSubmit(memeData) {
+  handleMemageSubmit(memeData) {
     if (this.state.memage) {
       memeService.setMemage(memeData._id, this.state.memage).then((result) => {
         this.props.submited({ ...memeData, memage: result.url });
@@ -64,31 +80,30 @@ export default class SubmitDialogComponent extends React.Component {
           <Modal.Body>
             <Form.Group>
               <Form.Label>Title</Form.Label>
-              <Form.Control value={title} onChange={(evt) => this.setState({ title: evt.target.value })} />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Category</Form.Label>
-              <Form.Control value={collection} onChange={(evt) => this.setState({ category: evt.target.value })} />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Author</Form.Label>
-              <Form.Control value={author} onChange={(evt) => this.setState({ author: evt.target.value })} />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Publish Date</Form.Label>
               <Form.Control
-                type="number"
-                value={publish}
-                onChange={(evt) => this.setState({ publish: evt.target.value })}
+                value={title}
+                onChange={(evt) => this.setState({ title: evt.target.value })}
               />
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Memage</Form.Label>
-              <Form.Control type="file" onChange={(evt) => this.handleSelectMemage(evt)} />
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                value={category}
+                onChange={(evt) =>
+                  this.setState({ category: evt.target.value })
+                }
+              />
+            </Form.Group>
+
+            <Form.Control
+              value={publish}
+              onSubmit={(evt) => this.setState({ publish: this.currtime })}
+            />
+
+            <Form.Group>
+              <Form.Label>Your Meme</Form.Label>
+              {/* <Form.Control type="file" onChange={(evt) => this.handleSelectMemage(evt)} /> */}
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

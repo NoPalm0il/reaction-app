@@ -1,7 +1,5 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSquare, faCheckSquare} from '@fortawesome/free-solid-svg-icons';
 import memeService from '../../services/meme';
 
 export default class RemoveDialogComponent extends React.Component {
@@ -28,11 +26,9 @@ export default class RemoveDialogComponent extends React.Component {
           If you proceed this action this element will be permenantly deleted from the system!
           <br />
           Are you sure?
-          <FontAwesomeIcon
-            style={{marginLeft: 10}}
-            onClick={() => this.setState ({sure: !sure})}
-            icon={sure ? faCheckSquare : faSquare}
-          />
+          <br />
+          <Button onClick={() => this.setState ({sure: !sure})}>{sure ? "yes" : "no"}</Button>         
+          
         </Modal.Body>
         <Modal.Footer>
           <Button
