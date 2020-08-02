@@ -8,7 +8,7 @@ export default class SubmitDialogComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.toEdit = props.meme !== undefined;
+    this.toEdit = false; //props.meme !== undefined
     this.state = this.getFormState();
   }
 
@@ -19,31 +19,25 @@ export default class SubmitDialogComponent extends React.Component {
           title: "",
           category: "",
           author: "",
-          publish: 0,
+          publish: "",
           memage: null,
         };
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
+
     const jsonData = (({ title, category, author, publish }) => ({
       title,
       category,
       author,
       publish,
     }))(this.state);
-    if (this.toEdit) {
-      const { _id, memage } = this.props.meme;
-      memeService
-        .update(_id, jsonData)
-        .then(() => this.handleMemageSubmit({ ...jsonData, _id, memage }));
-    } else {
-      memeService
-        .create(jsonData)
-        .then((result) =>
-          this.handleMemageSubmit({ ...jsonData, _id: result._id })
-        );
-    }
+    memeService
+      .create(jsonData)
+      .then((result) =>
+        this.handleMemageSubmit({ ...jsonData, _id: result._id })
+      );
   }
 
   handleMemageSubmit(memeData) {
@@ -74,7 +68,7 @@ export default class SubmitDialogComponent extends React.Component {
     return (
       <Modal show={show} onHide={this.handleCancel}>
         <Modal.Header>
-          <Modal.Title>{this.toEdit ? "Edit meme" : "Create meme"}</Modal.Title>
+          <Modal.Title>{this.toEdit ? "Edit book" : "Create book"}</Modal.Title>
         </Modal.Header>
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
           <Modal.Body>
@@ -87,7 +81,7 @@ export default class SubmitDialogComponent extends React.Component {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Category</Form.Label>
+              <Form.Label>category</Form.Label>
               <Form.Control
                 value={category}
                 onChange={(evt) =>
@@ -96,14 +90,31 @@ export default class SubmitDialogComponent extends React.Component {
               />
             </Form.Group>
 
-            <Form.Control
-              value={publish}
-              onSubmit={(evt) => this.setState({ publish: this.currtime })}
-            />
+            <Form.Group>
+              <Form.Label>Author</Form.Label>
+              <Form.Control
+                value={author}
+                onChange={(evt) => this.setState({ author: evt.target.value })}
+              />
+            </Form.Group>
 
             <Form.Group>
-              <Form.Label>Your Meme</Form.Label>
-              {/* <Form.Control type="file" onChange={(evt) => this.handleSelectMemage(evt)} /> */}
+              <Form.Label>Publish</Form.Label>
+              <Form.Control
+                type="number"
+                value={publish}
+                onChange={(evt) =>
+                  this.setState({ publish: evt.target.value })
+                }
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Cover</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(evt) => this.handleSelectCover(evt)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

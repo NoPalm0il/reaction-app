@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import services from "../../services";
-import SubmitDialogComponent from "../../components/meme/SubmitDialog";
-import SearchFormComponent from "../../components/meme/SearchForm";
 import "./Meme.css";
 
 class Meme extends Component {
@@ -37,7 +35,7 @@ class Meme extends Component {
         .then((value) => this.setState({ memes: value, favorites: true }))
         .catch((err) => this.setState({ error: err }));
   }
-o
+
   addToFavorites(memeId) {
     services.user
       .addMeme(memeId)
@@ -56,7 +54,7 @@ o
   }
 
   render() {
-    const { memes: memes, error, toCreate, favorites } = this.state;
+    //const { memes: memes, error, toCreate, favorites } = this.state;
 
     return (<div></div>);
   }
