@@ -1,5 +1,5 @@
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import React, { Component } from "react";
 
 export default class ToggleBt extends Component {
@@ -7,35 +7,38 @@ export default class ToggleBt extends Component {
     super(props);
     this.state = {
       togVal: false,
+      votes: 0,
     };
+  }
+
+  componentDidMount() {
+    this.setState({ votes: this.props.votes });
   }
 
   //TODO: work on this toggle and http post to change vote
   handleChange(value) {
-    if (value) this.setState({ votes: this.state.votes + 1, togVal: !this.state.togVal });
-    else this.setState({ votes: this.state.votes - 1, togVal: !this.state.togVal });
+    if (value) this.setState({ togVal: !this.state.togVal, votes: this.state.votes + 1 });
+    else this.setState({ togVal: !this.state.togVal, votes: this.state.votes - 1 });
+    this.forceUpdate();
     console.log(value);
   }
 
   render() {
-    const { togVal } = this.state;
+    const { togVal, votes } = this.state;
     return (
       <>
-        <ButtonGroup toggle>
+        <ToggleButtonGroup type="checkbox"  className="mb-2">
           <ToggleButton
-            type="radio"
-            variant="secondary"
-            name="radio"
             value={togVal}
-            checked={togVal}
+            variant="secondary"
             onChange={(e) => {
               e.preventDefault();
-              this.handleChange(e.currentTarget.value);
+              this.handleChange(!togVal);
             }}
           >
-            Upvote: {this.props.votes}
+            Upvotes: {votes}
           </ToggleButton>
-        </ButtonGroup>
+        </ToggleButtonGroup>
       </>
     );
   }
