@@ -1,38 +1,36 @@
 import React from "react";
-import Meme from "../../components/meme/Meme";
+import Meme from "../../components/meme/MemeComponent";
 import "./Home.css";
-import logo from "../../assets/logo.svg";
-import { Container, Row, Col } from "react-bootstrap";
-import Advertise from "../../components/advertise/Advertise";
-import Options from "../../components/options/Options";
-import Button from 'react-bootstrap/Button'
+import services from "../../services";
+import { ListGroup } from "react-bootstrap";
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ids: Array(9).fill(0),
+      memes: [],
+      error: undefined,
     };
   }
+
+  componentDidMount() {
+    services.meme
+      .getAll()
+      .then((value) => this.setState({ memes: value }))
+      .catch((err) => this.setState({ error: err }));
+  }
+
+  componentDidUpdate() {}
+
   render() {
+    const { memes } = this.state;
     return (
       <div className="Home">
-        <Container>
-          <Row>
-            <Col>
-              <Options />
-            </Col>
-            <Col xs={7}>
-              <Button variant="outline-light" style={{margin:"50px", marginTop:"90px", fontSize:"20px"}}>+</Button>
-              {this.state.ids.map((meme) => (
-                <Meme id={meme} memage={logo} />
-              ))}
-            </Col>
-            <Col>
-              <Advertise />
-            </Col>
-          </Row>
-        </Container>
+        <ListGroup>
+          {memes.map(({ _id, category, title, author, memage, votes }) => (
+            <Meme key={_id} category={category} title={title} author={author} memage={memage} votes={votes} />
+          ))}
+        </ListGroup>
       </div>
     );
   }

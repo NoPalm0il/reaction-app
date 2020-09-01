@@ -35,18 +35,13 @@ export default class NavbarComponent extends React.Component {
             </Nav.Link>
             {user ? (
               <>
-                <Nav.Link
-                  as={NavLink}
-                  to="/profile"
-                  style={{
-                    color: "white",
-                    border: "1px solid",
-                    borderRadius: "45px",
-                    backgroundColor: "#2F8AD7",
-                    marginLeft:"10px"
-                  }}
-                >
-                  O_O
+                <Nav.Item>
+                  <Nav.Link as={NavLink} to="/crmeme">
+                    Add Meme
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Link as={NavLink} to="/profile">
+                  {user.username}
                 </Nav.Link>
                 <Nav.Link
                   as={NavLink}
@@ -57,7 +52,6 @@ export default class NavbarComponent extends React.Component {
                     border: "1px solid",
                     borderRadius: "6px",
                     backgroundColor: "#2F8AD7",
-                    marginLeft:"10px"
                   }}
                 >
                   Logout

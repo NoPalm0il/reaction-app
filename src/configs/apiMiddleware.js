@@ -18,7 +18,7 @@ export const apiRequest = (method, route, params) => {
       .then((res) => parseResponse(res))
       .then((data) => resolve(data))
       .catch((err) => {
-        console.error(`error ${method} ${route}: ${err.message}`);
+        console.error(`api middle error ${method} ${route}: ${err.message}`);
         reject(err);
       });
   });
@@ -29,6 +29,7 @@ const parseResponse = (response) =>
     if (response.ok) {
       resolve(response.json());
     } else {
+      console.error("Parse response reject");
       reject(response.text());
     }
   });
@@ -42,5 +43,8 @@ const getQueryString = (query) => {
         .map(([key, value]) => `${key}=${value}`)
         .join("&")
     );
-  else return "";
+  else {
+    console.error("query returned \"\"");
+    return "";
+  }
 };
