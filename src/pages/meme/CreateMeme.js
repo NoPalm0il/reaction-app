@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import memeService from "../../services/meme";
+import AuthContext from "../../configs/authContext";
 
 export default class CreateMeme extends Component {
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +21,7 @@ export default class CreateMeme extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    this.setState({ author: "some", publish: new Date().toJSON() }, () => {
+    this.setState({ author: this.context.user.username, publish: new Date().toJSON() }, () => {
       const jsonData = (({ title, category, author, publish, memage, votes }) => ({
         title,
         category,

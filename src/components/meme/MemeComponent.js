@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
-import ToggleButtonExample  from "./toggleButton";
+import ToggleBt  from "./ToggleBt";
 import logo from "../../assets/logo.svg";
 
 export default class Meme extends Component {
@@ -50,7 +50,7 @@ export default class Meme extends Component {
             )}
           </Card.Body>
           <Card.Footer>
-            <ToggleButtonExample votes={votes}/>
+            <ToggleBt votes={votes}/>
           </Card.Footer>
         </Card>
         <br />

@@ -21,7 +21,7 @@ export default class Login extends Component {
           this.context.login({ username: this.state.username, ...data });
           this.props.history.push("/");
         })
-        .catch((err) => {});
+        .catch((err) => {console.error(err)});
     else console.log("insert username");
   }
 

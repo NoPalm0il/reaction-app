@@ -27,8 +27,8 @@ export default class Home extends React.Component {
     return (
       <div className="Home">
         <ListGroup>
-          {memes.map(({ _id, category, title, author, memage }) => (
-            <Meme key={_id} category={category} title={title} author={author} memage={memage} />
+          {memes.map(({ _id, category, title, author, memage, votes }) => (
+            <Meme key={_id} category={category} title={title} author={author} memage={memage} votes={votes} />
           ))}
         </ListGroup>
       </div>
