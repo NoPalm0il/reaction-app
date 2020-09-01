@@ -39,8 +39,7 @@ export default class Meme extends Component {
         <br />
         <Card style={cardstyle}>
           <Card.Header>
-            Author: {author}
-            {title}
+            Author: {author} | {title}
           </Card.Header>
           <Card.Body>
             {this.props.memage ? (

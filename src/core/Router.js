@@ -8,9 +8,9 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import About from "../pages/about/About";
 import Meme from "../pages/meme/Meme";
+import Profile from "../pages/profile/Profile";
 import CreateMeme from "../pages/meme/CreateMeme";
 import NullPage from "../pages/nullpage/Nullpage";
-import Privacy from "../pages/privacy/Privacy";
 
 export default class RouterComponent extends React.Component {
   render() {
@@ -25,6 +25,7 @@ export default class RouterComponent extends React.Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/meme/:id" component={Meme} />
             <Route exact path="/crmeme" component={CreateMeme} />
+            <Route exact path="/profile" component={Profile} />
             <Route path="*" component={NullPage} />
           </Switch>
         </Router>
