@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
-import ToggleBt  from "./ToggleBt";
-import logo from "../../assets/logo.svg";
+import ToggleBt from "./ToggleBt";
 
 export default class Meme extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ export default class Meme extends Component {
       color: "white",
     };
 
-    const {title, author, memage, votes} = this.state;
+    const { title, author, memage, votes } = this.state;
 
     return (
       <>
@@ -42,14 +41,10 @@ export default class Meme extends Component {
             Author: {author} | {title}
           </Card.Header>
           <Card.Body>
-            {this.props.memage ? (
-              <Card.Img variant="top" src={memage} />
-            ) : (
-              <Card.Img variant="top" src={logo} />
-            )}
+            <Card.Img variant="top" src={memage} />
           </Card.Body>
           <Card.Footer>
-            <ToggleBt votes={votes}/>
+            <ToggleBt votes={votes} />
           </Card.Footer>
         </Card>
         <br />
