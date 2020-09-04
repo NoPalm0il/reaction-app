@@ -24,45 +24,52 @@ export default class ToggleBt extends Component {
           togVal: !this.state.togVal,
           votes: this.state.votes + 1,
         },
-        () => {
-          services.meme
-            .getOne(this.props.memeKey)
-            .then((value) =>
-              this.setState({ currMeme: value }, () => {
-                var currMeme = this.state.currMeme;
-                currMeme.votes = this.state.votes;
-                this.setState({ currMeme: currMeme }, () => {
-                  const jsonData = (({
-                    title,
-                    category,
-                    author,
-                    publish,
-                    memage,
-                    votes,
-                  }) => ({
-                    title,
-                    category,
-                    author,
-                    publish,
-                    memage,
-                    votes,
-                  }))(this.state.currMeme);
-                  services.meme
-                    .update(this.props.memeKey, jsonData).then((value) => console.log(value))
-                    .catch((error) => console.err(error));
-                });
-              })
-            )
-            .catch((error) => console.err(error));
-        }
+        this.buttonHelper()
       );
     } else {
-      this.setState({
-        togVal: !this.state.togVal,
-        votes: this.state.votes - 1,
-      });
+      this.setState(
+        {
+          togVal: !this.state.togVal,
+          votes: this.state.votes - 1,
+        },
+        this.buttonHelper()
+      );
     }
   }
+
+  buttonHelper() {
+    services.meme
+      .getOne(this.props.memeKey)
+      .then((value) =>
+        this.setState({ currMeme: value }, () => {
+          var currMeme = this.state.currMeme;
+          currMeme.votes = this.state.votes;
+          this.setState({ currMeme: currMeme }, () => {
+            const jsonData = (({
+              title,
+              category,
+              author,
+              publish,
+              memage,
+              votes,
+            }) => ({
+              title,
+              category,
+              author,
+              publish,
+              memage,
+              votes,
+            }))(this.state.currMeme);
+            services.meme
+              .update(this.props.memeKey, jsonData)
+              .then((value) => console.log(value))
+              .catch((error) => console.err(error));
+          });
+        })
+      )
+      .catch((error) => console.err(error));
+  }
+
   render() {
     return (
       <>
