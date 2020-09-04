@@ -10,10 +10,13 @@ export const apiRequest = (method, route, params) => {
     fetch(serviceUrl, {
       method,
       headers: {
-        "Content-Type": "application/json",
+        ...(params && params.jsonData && { "Content-Type": "application/json" }),
         ...(currentUser && { Authorization: JSON.parse(currentUser).token }),
       },
-      ...(params && params.body && { body: JSON.stringify(params.body) }),
+      ...(params && {
+        ...(params.jsonData && { body: JSON.stringify(params.jsonData) }),
+        ...(params.formData && { body: params.formData }),
+      }),
     })
       .then((res) => parseResponse(res))
       .then((data) => resolve(data))

@@ -71,7 +71,7 @@ export default class CreateMeme extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>category</Form.Label>
+            <Form.Label>Category</Form.Label>
             <Form.Control
               value={category}
               onChange={(evt) => this.setState({ category: evt.target.value })}
@@ -79,7 +79,7 @@ export default class CreateMeme extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Cover</Form.Label>
+            <Form.Label>Memage</Form.Label>
             <Form.Control
               type="file"
               onChange={(evt) => this.handleSelectMemage(evt)}
@@ -87,7 +87,7 @@ export default class CreateMeme extends Component {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Save
+            Choose
           </Button>
         </Form>
       </div>

@@ -1,6 +1,6 @@
 import { apiRequest } from "../configs/apiMiddleware";
 
 export default {
-  register: (body) => apiRequest("POST", "/user/register", { body }),
-  login: (body) => apiRequest("POST", "/user/login", { body }),
+  register: (jsonData) => apiRequest("POST", "/user/register", { jsonData }),
+  login: (jsonData) => apiRequest("POST", "/user/login", { jsonData }),
 };

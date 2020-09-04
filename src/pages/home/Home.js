@@ -16,7 +16,7 @@ export default class Home extends React.Component {
   componentDidMount() {
     services.meme
       .getAll()
-      .then((value) => this.setState({ memes: value }))
+      .then((value) => this.setState({ memes: value.reverse() }))
       .catch((err) => this.setState({ error: err }));
   }
 
