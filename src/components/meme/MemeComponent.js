@@ -49,7 +49,7 @@ export default class Meme extends Component {
             )}
           </Card.Body>
           <Card.Footer>
-            <ToggleBt votes={votes}/>
+            <ToggleBt memeKey={this.props.memeKey} votes={votes}/>
           </Card.Footer>
         </Card>
         <br />
