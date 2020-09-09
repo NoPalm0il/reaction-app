@@ -6,22 +6,26 @@ import "./About.css";
 class About extends Component {
   render() {
     return (
+
+      
       <div className="About">
-        <div class="jumbotron" style={{paddingTop:"15px", paddingBottom:"15px", marginRight:"500px", marginLeft:"100px", alignItems:"center"}}>
+        <div class="jumbotron-fluid" style={{paddingTop:"15px", paddingBottom:"15px", marginRight:"500px", marginLeft:"500px", alignItems:"center"}}>
           <h1 class="display-4">Contact Us!</h1>
           <p class="lead">
-            This is a simple hero unit, a simple jumbotron-style component for
-            calling extra attention to featured content or information.
+            If you have any difficulties acessing or enjoying our website
+            please feel free to contact us! We will answer to your questions as quickly as we can.
           </p>
           <hr class="my-4" />
           <p>
-            It uses utility classes for typography and spacing to space content
-            out within the larger container.
+            You can also access our University's website if you want direct access to where we study/work
           </p>
-          <a class="btn btn-primary btn-lg" href="/privacy" role="button">
-            Privacy
+          <a class="btn btn-primary btn-lg" href="www.ipt.pt" role="button">
+            Website
           </a>
         </div>
+
+
+
         <CardDeck style={{ backgroundColor: "#202020", padding: "100px" }}>
           <Card
             style={{

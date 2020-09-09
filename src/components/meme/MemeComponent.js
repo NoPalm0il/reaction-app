@@ -37,14 +37,15 @@ export default class Meme extends Component {
       <>
         <br />
         <Card style={cardstyle}>
-          <Card.Header>
-            Author: {author} | {title}
-          </Card.Header>
+          <Card.Header>{title}</Card.Header>
           <Card.Body>
             <Card.Img variant="top" src={memage} />
+            <div style={{ float: "right", fontSize: "15px" }}>
+            meme by: {author}
+          </div>
           </Card.Body>
           <Card.Footer>
-            <ToggleBt memeKey={this.props.memeKey} votes={votes}/>
+            <ToggleBt memeKey={this.props.memeKey} votes={votes} />
           </Card.Footer>
         </Card>
         <br />

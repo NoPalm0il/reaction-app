@@ -9,3 +9,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
+.center {
+  margin-top: 5px;
+  margin-bottom: 100px;
+  width: 20%;
+  padding: 10px;
+  font-family: Cambria;
+  font-size: 50px;
+}

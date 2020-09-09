@@ -21,28 +21,38 @@ export default class CreateMeme extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if(this.context.user == null){
+    if (this.context.user == null) {
       return;
     }
 
-    this.setState({ author: this.context.user.username, publish: new Date().toJSON() }, () => {
-      const jsonData = (({ title, category, author, publish, memage, votes }) => ({
-        title,
-        category,
-        author,
-        publish,
-        memage,
-        votes,
-      }))(this.state);
+    this.setState(
+      { author: this.context.user.username, publish: new Date().toJSON() },
+      () => {
+        const jsonData = (({
+          title,
+          category,
+          author,
+          publish,
+          memage,
+          votes,
+        }) => ({
+          title,
+          category,
+          author,
+          publish,
+          memage,
+          votes,
+        }))(this.state);
 
-      memeService
-        .create(jsonData)
-        .then((result) => {
-          this.handleMemageSubmit({ ...jsonData, _id: result._id });
-        })
-        .then(this.props.history.push("/"))
-        .catch((evt) => console.error("error: " + evt));
-    });
+        memeService
+          .create(jsonData)
+          .then((result) => {
+            this.handleMemageSubmit({ ...jsonData, _id: result._id });
+          })
+          .then(this.props.history.push("/"))
+          .catch((evt) => console.error("error: " + evt));
+      }
+    );
   }
 
   handleMemageSubmit(memeData) {
@@ -61,6 +71,9 @@ export default class CreateMeme extends Component {
 
     return (
       <div className="CreateMeme">
+        
+        <div class="center">Feeling funny hun?</div>
+
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
