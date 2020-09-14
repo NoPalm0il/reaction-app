@@ -21,11 +21,12 @@ export default class CreateMeme extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if(this.context.user == null){
+    if(!this.context.user)
       return;
-    }
 
     this.setState({ author: this.context.user.username, publish: new Date().toJSON() }, () => {
+      if(!this.state.memage)
+        return;
       const jsonData = (({ title, category, author, publish, memage, votes }) => ({
         title,
         category,

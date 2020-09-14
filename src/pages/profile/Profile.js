@@ -5,9 +5,7 @@ import services from "../../services";
 import { ListGroup } from "react-bootstrap";
 import AuthContext from "../../configs/authContext";
 
-
 class Profile extends Component {
-
   static contextType = AuthContext;
 
   constructor(props) {
@@ -19,14 +17,19 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    services.meme
-      .getQuery(this.context.user.username)
-      .then((value) => this.setState({ memes: value }))
+    services.user
+      .getMemes(this.context.user.username)
+      .then((usermemes) => {
+        services.meme
+          .getArray({memes: usermemes})
+          .then((res) => this.setState({memes: res}))
+          .catch((err) => console.error(err));
+      })
       .catch((err) => this.setState({ error: err }));
   }
 
   render() {
-    const {memes} = this.state;
+    const { memes } = this.state;
 
     return (
       <div className="Profile">

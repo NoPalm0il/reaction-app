@@ -6,6 +6,7 @@ export default class Meme extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       category: "",
       title: "",
       author: "",
@@ -16,6 +17,7 @@ export default class Meme extends Component {
 
   componentDidMount() {
     this.setState({
+      id: this.props.memeKey,
       category: this.props.category,
       title: this.props.title,
       author: this.props.author,
@@ -31,7 +33,7 @@ export default class Meme extends Component {
       color: "white",
     };
 
-    const { title, author, memage, votes } = this.state;
+    const { title, author, memage } = this.state;
 
     return (
       <>
@@ -44,7 +46,7 @@ export default class Meme extends Component {
             <Card.Img variant="top" src={memage} />
           </Card.Body>
           <Card.Footer>
-            <ToggleBt memeKey={this.props.memeKey} votes={votes}/>
+            <ToggleBt currMeme={this.state}/>
           </Card.Footer>
         </Card>
         <br />
