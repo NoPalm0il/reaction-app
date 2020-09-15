@@ -15,6 +15,17 @@ export default class CreateMeme extends Component {
       publish: "",
       votes: 0,
       memage: null,
+      categories: [
+        "Choose One",
+        "Hot",
+        "Funny",
+        "Gaming",
+        "Sports",
+        "Cool",
+        "Tech",
+        "Cars",
+        "Politics",
+      ],
     };
   }
 
@@ -22,6 +33,15 @@ export default class CreateMeme extends Component {
     evt.preventDefault();
 
     if (this.context.user == null) {
+      return;
+    }
+
+    if (
+      this.state.category === "Choose One" ||
+      this.state.category === "" ||
+      !this.state.memage
+    ) {
+      alert("Choose category and a memage");
       return;
     }
 
@@ -67,12 +87,11 @@ export default class CreateMeme extends Component {
   }
 
   render() {
-    const { title, category } = this.state;
+    const { title, category, categories } = this.state;
 
     return (
       <div className="CreateMeme">
-        
-        <div class="center">Feeling funny hun?</div>
+        <div className="center">Feeling funny hun?</div>
 
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
           <Form.Group>
@@ -88,7 +107,13 @@ export default class CreateMeme extends Component {
             <Form.Control
               value={category}
               onChange={(evt) => this.setState({ category: evt.target.value })}
-            />
+              as="select"
+              size="lg"
+            >
+              {categories.map((cat) => (
+                <option value={cat}>{cat}</option>
+              ))}
+            </Form.Control>
           </Form.Group>
 
           <Form.Group>
