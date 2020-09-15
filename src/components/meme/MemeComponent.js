@@ -16,14 +16,14 @@ export default class Meme extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      id: this.props.memeKey,
-      category: this.props.category,
-      title: this.props.title,
-      author: this.props.author,
-      memage: this.props.memage,
-      votes: this.props.votes,
-    });
+    this.setState((state, props) => ({
+      id: props.memeKey,
+      category: props.category,
+      title: props.title,
+      author: props.author,
+      memage: props.memage,
+      votes: props.votes,
+    }));
   }
 
   render() {

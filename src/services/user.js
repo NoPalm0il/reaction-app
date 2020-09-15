@@ -7,4 +7,5 @@ export default {
   addLike: (id, jsonData) => apiRequest("PUT", `/user/addLike/${id}`, { jsonData }),
   removeLike: (id, jsonData) => apiRequest("PUT", `/user/removeLike/${id}`, { jsonData }),
   isLiked: (id, jsonData) => apiRequest("POST", `/user/memeLiked/${id}`, { jsonData }),
+  getLikedMemes: (username) => apiRequest("GET", `/user/getLikedMemes/${username}`),
 };

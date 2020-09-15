@@ -20,8 +20,6 @@ export default class Home extends React.Component {
       .catch((err) => this.setState({ error: err }));
   }
 
-  componentDidUpdate() {}
-
   render() {
     const { memes } = this.state;
     return (

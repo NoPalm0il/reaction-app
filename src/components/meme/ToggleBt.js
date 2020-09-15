@@ -68,7 +68,7 @@ export default class ToggleBt extends Component {
     return (
       <Button
         active={this.state.togVal}
-        variant="secondary"
+        variant={this.state.togVal ? "primary" : "secondary"}
         onClick={(e) => {
           e.preventDefault();
           this.handleChange(!this.state.togVal);
