@@ -10,7 +10,7 @@ export default class NavbarComponent extends React.Component {
     const { user, logout } = this.context;
 
     return (
-      <Navbar expand="sm" variant="dark" style={{ backgroundColor: "#303030" }}>
+      <Navbar expand="sm" variant="dark" style={{ backgroundColor: "#303030"}}>
         <Container>
           <Nav>
             <Nav.Link

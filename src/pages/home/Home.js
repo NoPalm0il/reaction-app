@@ -1,6 +1,7 @@
 import React from "react";
 import Meme from "../../components/meme/MemeComponent";
 import Sidebar from "../../components/global/Sidebar";
+import ScrollTopArrow from "../../components/global/ScrollTopArrow";
 import "./Home.css";
 import services from "../../services";
 import { ListGroup } from "react-bootstrap";
@@ -50,6 +51,9 @@ export default class Home extends React.Component {
             float="right"
           ></img>
         </div>
+
+        <ScrollTopArrow />
+
       </div>
     );
   }

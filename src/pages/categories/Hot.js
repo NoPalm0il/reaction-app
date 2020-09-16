@@ -4,6 +4,8 @@ import Sidebar from "../../components/global/Sidebar";
 import "./Categories.css";
 import services from "../../services";
 import { ListGroup } from "react-bootstrap";
+import ScrollTopArrow from "../../components/global/ScrollTopArrow";
+
 
 export default class Hot extends React.Component {
   constructor(props) {
@@ -16,11 +18,10 @@ export default class Hot extends React.Component {
 
   componentDidMount() {
     services.meme
-      .getAll()
-      .then((value) => this.setState({ memes: value.reverse() }))
+      .getCategoryMemes("Hot")
+      .then((value) => this.setState({ memes: value.reverse() }, console.log(this.state.memes)))
       .catch((err) => this.setState({ error: err }));
   }
-
   componentDidUpdate() {}
 
   render() {
@@ -50,6 +51,9 @@ export default class Hot extends React.Component {
             float="right"
           ></img>
         </div>
+
+        <ScrollTopArrow />
+
       </div>
     );
   }

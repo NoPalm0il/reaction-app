@@ -4,6 +4,7 @@ import "./Profile.css";
 import services from "../../services";
 import { ListGroup } from "react-bootstrap";
 import AuthContext from "../../configs/authContext";
+import ScrollTopArrow from "../../components/global/ScrollTopArrow";
 
 
 class Profile extends Component {
@@ -44,6 +45,9 @@ class Profile extends Component {
             />
           ))}
         </ListGroup>
+
+        <ScrollTopArrow />
+
       </div>
     );
   }
