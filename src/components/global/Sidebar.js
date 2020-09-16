@@ -1,9 +1,8 @@
-//the sidebar that shows all of the categories available in memes
-//choosing each one will bring the user to that specific array of memes (ex.: 'Funny' memes)
-
 import React, { Component } from 'react';
 import "./Sidebar.css";
  
+//the sidebar that shows all of the categories available in memes
+//choosing each one will bring the user to that specific array of memes (ex.: 'Funny' memes)
 export default class Sidebar extends Component {
   render() {
     return (

@@ -1,12 +1,11 @@
-//the main component of the meme, where all its info is showed
-//a meme has an id, a category, a title, an author, a memage (which is the image of the meme), and the total votes (upvotes)
-
 import React, { Component } from "react";
 import { Card, Button, Table, Form } from "react-bootstrap";
 import ToggleBt from "./ToggleBt";
 import services from "../../services";
 import AuthContext from "../../configs/authContext";
 
+//the main component of the meme, where all its info is showed
+//a meme has an id, a category, a title, an author, a memage (which is the image of the meme), and the total votes (upvotes)
 export default class Meme extends Component {
   static contextType = AuthContext;
 
@@ -83,18 +82,17 @@ export default class Meme extends Component {
           </Card.Body>
           <Card.Footer>
             <ToggleBt memeKey={this.props.memeKey} currMeme={this.state} />
+
             <Button
               active={this.state.showCommentSection}
               onClick={(e) => this.handleToggleComments(e)}
-            >
-              Comments
-            </Button>
+            ><span role="img" aria-label="comments">💬</span></Button>
           </Card.Footer>
           <Card.Footer>
             {!this.state.comments ? (
               this.state.showCommentSection ? (
                 <Form onSubmit={(evt) => this.handleSubmitComment(evt)}>
-                  <Form.Control
+                  <Form.Control maxLength={30}
                     value={this.state.sendComment}
                     onChange={(evt) =>
                       this.setState({ sendComment: evt.target.value })
@@ -109,11 +107,11 @@ export default class Meme extends Component {
               )
             ) : !this.state.showCommentSection ? (
               <p style={{ fontSize: "20px" }}>
-                {this.state.comments.lastIndexOf() + 1} comments
+                {this.state.comments.length} comments
               </p>
             ) : (
               <>
-                <Table variant="dark">
+                <Table variant="dark" size="sm">
                   {comments.map((cmt) => (
                     <tr>
                       <td>{cmt.author}</td>
@@ -122,7 +120,7 @@ export default class Meme extends Component {
                   ))}
                 </Table>
                 <Form onSubmit={(evt) => this.handleSubmitComment(evt)}>
-                  <Form.Control
+                  <Form.Control maxLength={30}
                     value={this.state.sendComment}
                     onChange={(evt) =>
                       this.setState({ sendComment: evt.target.value })

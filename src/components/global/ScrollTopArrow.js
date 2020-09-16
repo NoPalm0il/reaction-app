@@ -1,9 +1,9 @@
-//The code to make the button that scrolls all the way up to the top when we are viewing memes
-//It is an outilne Button from React Bootstrap the appears only if the page is scrolled all the way down in a certain point
-
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./App.css";
+
+//The code to make the button that scrolls all the way up to the top when we are viewing memes
+//It is an outilne Button from React Bootstrap the appears only if the page is scrolled all the way down in a certain point
 
 //in the beginning the button does not appear
 const ScrollTopArrow = () => {

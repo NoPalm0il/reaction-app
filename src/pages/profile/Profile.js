@@ -1,7 +1,3 @@
-//the page where the user gets to see his profile, which contains his memes
-//in this page the user can also delete any meme that he posted
-
-
 import React, { Component } from "react";
 import Meme from "../../components/meme/MemeComponent";
 import "./Profile.css";
@@ -10,6 +6,8 @@ import { ListGroup, Button, Modal } from "react-bootstrap";
 import AuthContext from "../../configs/authContext";
 import ScrollTopArrow from "../../components/global/ScrollTopArrow";
 
+//the page where the user gets to see his profile, which contains his memes
+//in this page the user can also delete any meme that he posted
 class Profile extends Component {
   static contextType = AuthContext;
 
@@ -87,7 +85,8 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-        <Button onClick={(e) => this.handleViewMemes(e)}>Switch view</Button>
+        
+        <Button onClick={(e) => this.handleViewMemes(e)}>Switch View</Button>
 
         {this.state.viewMyMemes ? (
           <h1 className="title">My Memes:</h1>
@@ -110,13 +109,17 @@ class Profile extends Component {
                   comments={comments}
                 />
 
-                <Button
-                  className="dltBt"
-                  variant="danger"
-                  onClick={(e) => this.handleOpenModal(e, _id)}
-                >
-                  Delete Meme
-                </Button>
+                {this.context.user.username === author ? (
+                  <Button
+                    className="dltBt"
+                    variant="danger"
+                    onClick={(e) => this.handleOpenModal(e, _id)}
+                  >
+                    Delete Meme
+                  </Button>
+                ) : (
+                  <></>
+                )}
               </>
             )
           )}

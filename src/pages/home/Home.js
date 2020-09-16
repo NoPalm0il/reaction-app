@@ -1,6 +1,3 @@
-//the homepage, which contains the navbar, the list of memes, the sidebar of categories and the right sided advertisement
-//the homepage is where the user can interact with the application in itself as well as, where he can enjoy the memes
-
 import React from "react";
 import Meme from "../../components/meme/MemeComponent";
 import Sidebar from "../../components/global/Sidebar";
@@ -9,6 +6,8 @@ import "./Home.css";
 import services from "../../services";
 import { ListGroup } from "react-bootstrap";
 
+//the homepage, which contains the navbar, the list of memes, the sidebar of categories and the right sided advertisement
+//the homepage is where the user can interact with the application in itself as well as, where he can enjoy the memes
 export default class Home extends React.Component {
   constructor(props) {
     super(props);

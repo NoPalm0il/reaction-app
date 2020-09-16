@@ -1,12 +1,11 @@
-//the about page where it has some information about the students and the website itself
-//it contains a couple of demostrative paragraphs as well as the link to the IPT website
-//it also shows two cards belonging to the authors of the website with their respective picture, name and student number
-
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import "./About.css";
 
+//the about page where it has some information about the students and the website itself
+//it contains a couple of demostrative paragraphs as well as the link to the IPT website
+//it also shows two cards belonging to the authors of the website with their respective picture, name and student number
 class About extends Component {
   render() {
     return (

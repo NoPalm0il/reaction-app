@@ -1,12 +1,11 @@
-//the login page which serves just its only purpose, allow the user to log in the website
-//the user enters his credentials and is automatically logged in
-
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
 import services from "../../services";
 import AuthContext from "../../configs/authContext";
 
+//the login page which serves just its only purpose, allow the user to log in the website
+//the user enters his credentials and is automatically logged in
 export default class Login extends Component {
   static contextType = AuthContext;
 

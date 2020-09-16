@@ -74,7 +74,7 @@ export default class ToggleBt extends Component {
           this.handleChange(!this.state.togVal);
         }}
       >
-        Upvotes: {this.state.votes}
+        <span role="img" aria-label="upvote">👍</span>Upvotes: {this.state.votes}
       </Button>
     );
   }
