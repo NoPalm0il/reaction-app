@@ -13,4 +13,5 @@ export default {
   getVotes: (id) => apiRequest("GET", `/meme/vote/get/${id}`),
   setMemage: (id, formData) => apiRequest("PUT", `/meme/memage/${id}`, { formData }),
   remove: (id) => apiRequest("DELETE", `/meme/data/${id}`),
+  addComment: (id, jsonData) => apiRequest("PUT", `/meme/comment/${id}`, { jsonData }),
 };

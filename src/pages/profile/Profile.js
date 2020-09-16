@@ -16,21 +16,36 @@ class Profile extends Component {
       error: undefined,
       show: false,
       rmId: "",
+      showLikes: false,
+      viewMyMemes: true,
     };
-
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount() {
+    this.loadUserMemes();
+  }
+
+  loadUserMemes() {
     services.user
       .getMemes(this.context.user.username)
-      .then((usermemes) => {
+      .then((usermemes) =>
         services.meme
           .getArray({ memes: usermemes })
           .then((res) => this.setState({ memes: res.reverse() }))
-          .catch((err) => console.error(err));
-      })
+          .catch((err) => console.error(err))
+      )
+      .catch((err) => this.setState({ error: err }));
+  }
+
+  loadUserLikedMemes() {
+    services.user
+      .getLikedMemes(this.context.user.username)
+      .then((likedmemes) =>
+        services.meme
+          .getArray({ memes: likedmemes })
+          .then((res) => this.setState({ memes: res.reverse() }))
+          .catch((err) => console.error(err))
+      )
       .catch((err) => this.setState({ error: err }));
   }
 
@@ -50,8 +65,17 @@ class Profile extends Component {
       .remove(this.state.rmId)
       .then(this.forceUpdate())
       .catch((err) => console.warn(err));
-    
+
     this.handleCloseModal();
+  }
+
+  handleViewMemes(e) {
+    e.preventDefault();
+
+    if (this.state.viewMyMemes) this.loadUserLikedMemes();
+    else this.loadUserMemes();
+
+    this.setState({ viewMyMemes: !this.state.viewMyMemes });
   }
 
   render() {
@@ -59,30 +83,39 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-        <div className="title" >My Memes:</div>
-        
-        <ListGroup>
-          {memes.map(({ _id, category, title, author, memage, votes }) => (
-            <>
-              <Meme
-                key={_id}
-                memeKey={_id}
-                category={category}
-                title={title}
-                author={author}
-                memage={memage}
-                votes={votes}
-              />
+        <Button onClick={(e) => this.handleViewMemes(e)}>Switch view</Button>
 
-              <Button
-                className="dltBt"
-                variant="danger"
-                onClick={(e) => this.handleOpenModal(e, _id)}
-              >
-                Delete Meme
-              </Button>
-            </>
-          ))}
+        {this.state.viewMyMemes ? (
+          <h1 className="title">My Memes:</h1>
+        ) : (
+          <h1 className="title">My Liked Memes:</h1>
+        )}
+
+        <ListGroup>
+          {memes.map(
+            ({ _id, category, title, author, memage, votes, comments }) => (
+              <>
+                <Meme
+                  key={_id}
+                  memeKey={_id}
+                  category={category}
+                  title={title}
+                  author={author}
+                  memage={memage}
+                  votes={votes}
+                  comments={comments}
+                />
+
+                <Button
+                  className="dltBt"
+                  variant="danger"
+                  onClick={(e) => this.handleOpenModal(e, _id)}
+                >
+                  Delete Meme
+                </Button>
+              </>
+            )
+          )}
         </ListGroup>
 
         <ScrollTopArrow />

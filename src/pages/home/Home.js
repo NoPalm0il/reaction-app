@@ -30,7 +30,7 @@ export default class Home extends React.Component {
         <Sidebar className="sidenav"/>
 
         <ListGroup>
-          {memes.map(({ _id, category, title, author, memage, votes }) => (
+          {memes.map(({ _id, category, title, author, memage, votes, comments }) => (
             <Meme
               key={_id}
               memeKey={_id}
@@ -39,6 +39,7 @@ export default class Home extends React.Component {
               author={author}
               memage={memage}
               votes={votes}
+              comments={comments}
             />
           ))}
         </ListGroup>
