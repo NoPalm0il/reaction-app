@@ -1,3 +1,7 @@
+//the page where the user gets to see his profile, which contains his memes
+//in this page the user can also delete any meme that he posted
+
+
 import React, { Component } from "react";
 import Meme from "../../components/meme/MemeComponent";
 import "./Profile.css";
@@ -61,6 +65,7 @@ class Profile extends Component {
       <div className="Profile">
         <div className="title" >My Memes:</div>
         
+        {/*the list of the memes that the user posted*/}
         <ListGroup>
           {memes.map(({ _id, category, title, author, memage, votes }) => (
             <>
@@ -74,6 +79,7 @@ class Profile extends Component {
                 votes={votes}
               />
 
+              {/*the button to delete the meme*/}
               <Button
                 className="dltBt"
                 variant="danger"
@@ -87,6 +93,7 @@ class Profile extends Component {
 
         <ScrollTopArrow />
 
+        {/*the user gets a second chance to the decide if he wants to delete the meme or not*/}
         <Modal show={show} onHide={this.handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>Are you sure about that?</Modal.Title>
