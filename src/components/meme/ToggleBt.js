@@ -1,30 +1,51 @@
-import ToggleButton from "react-bootstrap/ToggleButton";
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import Button from "react-bootstrap/Button";
 import React, { Component } from "react";
 import services from "../../services";
+import AuthContext from "../../configs/authContext";
 
 export default class ToggleBt extends Component {
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
     this.state = {
       togVal: false,
-      votes: 0,
-      currMeme: null,
+      currMeme: {
+        votes: -1,
+      },
+      votes: -1,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ votes: nextProps.votes });
+    this.setState({ currMeme: nextProps.currMeme }, () => {
+      if (this.context.user)
+        services.user
+          .isLiked(this.state.currMeme.id, {
+            username: this.context.user.username,
+          })
+          .then((data) => this.setState({ togVal: data.isLiked }))
+          .catch((err) => console.error(err.message));
+      this.setState({ votes: this.state.currMeme.votes });
+    });
   }
 
   handleChange(value) {
+    if (!this.context.user) return;
+
     if (value) {
       this.setState(
         {
           togVal: !this.state.togVal,
           votes: this.state.votes + 1,
         },
-        this.buttonHelper()
+        () => {
+          services.meme
+            .incVotes(this.state.currMeme.id, {
+              username: this.context.user.username,
+            })
+            .catch((err) => console.error(err.message));
+        }
       );
     } else {
       this.setState(
@@ -32,60 +53,29 @@ export default class ToggleBt extends Component {
           togVal: !this.state.togVal,
           votes: this.state.votes - 1,
         },
-        this.buttonHelper()
+        () => {
+          services.meme
+            .decVotes(this.state.currMeme.id, {
+              username: this.context.user.username,
+            })
+            .catch((err) => console.error(err.message));
+        }
       );
     }
   }
 
-  buttonHelper() {
-    services.meme
-      .getOne(this.props.memeKey)
-      .then((value) =>
-        this.setState({ currMeme: value }, () => {
-          var currMeme = this.state.currMeme;
-          currMeme.votes = this.state.votes;
-          this.setState({ currMeme: currMeme }, () => {
-            const jsonData = (({
-              title,
-              category,
-              author,
-              publish,
-              memage,
-              votes,
-            }) => ({
-              title,
-              category,
-              author,
-              publish,
-              memage,
-              votes,
-            }))(this.state.currMeme);
-            services.meme
-              .update(this.props.memeKey, jsonData)
-              .then((value) => console.log(value))
-              .catch((error) => console.err(error));
-          });
-        })
-      )
-      .catch((error) => console.err(error));
-  }
-
   render() {
     return (
-      <>
-        <ToggleButtonGroup type="checkbox" className="mb-2">
-          <ToggleButton
-            value={this.state.togVal}
-            variant="secondary"
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleChange(!this.state.togVal);
-            }}
-          >
-            Upvotes: {this.state.votes}
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </>
+      <Button
+        active={this.state.togVal}
+        variant="secondary"
+        onClick={(e) => {
+          e.preventDefault();
+          this.handleChange(!this.state.togVal);
+        }}
+      >
+        Upvotes: {this.state.votes}
+      </Button>
     );
   }
 }

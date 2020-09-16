@@ -34,7 +34,6 @@ export default class CreateMeme extends Component {
 
     if (this.context.user == null) {
       return;
-    }
 
     if (
       this.state.category === "Choose One" ||
