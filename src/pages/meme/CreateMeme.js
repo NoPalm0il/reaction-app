@@ -32,7 +32,7 @@ export default class CreateMeme extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (this.context.user == null) {
+    if (this.context.user == null)
       return;
 
     if (

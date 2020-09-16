@@ -47,7 +47,7 @@ export default class Meme extends Component {
           </div>
           </Card.Body>
           <Card.Footer>
-            <ToggleBt memeKey={this.props.memeKey} votes={votes} />
+            <ToggleBt memeKey={this.props.memeKey} currMeme={this.state} />
           </Card.Footer>
         </Card>
         <br />
