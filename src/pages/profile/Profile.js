@@ -31,7 +31,7 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-        <div>My Memes:</div>
+        <div className="title" >My Memes:</div>
         
         <ListGroup>
           {memes.map(({ _id, category, title, author, memage, votes }) => (
