@@ -1,3 +1,5 @@
+//the page for when the result isn't found
+
 import React, { Component } from 'react';
 import './Nullpage.css';
 

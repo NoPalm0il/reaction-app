@@ -1,3 +1,6 @@
+//the main component of the meme, where all its info is showed
+//a meme has an id, a category, a title, an author, a memage (which is the image of the meme), and the total votes (upvotes)
+
 import React, { Component } from "react";
 import { Card, Button, Table, Form } from "react-bootstrap";
 import ToggleBt from "./ToggleBt";

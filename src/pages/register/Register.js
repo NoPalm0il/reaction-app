@@ -1,3 +1,6 @@
+//the register page where the user can create an account in the React.ion website to start posting memes
+//the user is asked to select a username, an email and a password as the credentials to later log in
+
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";

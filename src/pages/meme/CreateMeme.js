@@ -1,3 +1,6 @@
+//the page in which the user gets the privilege to add a meme to the website
+//first he chooses a title, then a category, followed by the meme itself and then he adds the meme to the database
+
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import memeService from "../../services/meme";
@@ -32,8 +35,9 @@ export default class CreateMeme extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (this.context.user == null)
-      return;
+    if (this.context.user == null) return;
+
+    //if the user doesn't choose an image and/or a category, he receives an alert
 
     if (
       this.state.category === "Choose One" ||
@@ -96,6 +100,7 @@ export default class CreateMeme extends Component {
           <Form.Group>
             <Form.Label>Title</Form.Label>
             <Form.Control
+              placeholder="Insert a title here"
               value={title}
               onChange={(evt) => this.setState({ title: evt.target.value })}
             />

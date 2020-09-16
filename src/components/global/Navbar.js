@@ -10,6 +10,8 @@ export default class NavbarComponent extends React.Component {
     const { user, logout } = this.context;
 
     return (
+      //The top navbar has the Homepage, About, Login and Sign Up links if the user isn't logged in
+      //When the user is logged in, it has more options: Add Meme, Profile and Logout
       <Navbar expand="sm" variant="dark" style={{ backgroundColor: "#303030"}}>
         <Container>
           <Nav>

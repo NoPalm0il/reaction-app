@@ -1,3 +1,7 @@
+//the page where the user gets to see his profile, which contains his memes
+//in this page the user can also delete any meme that he posted
+
+
 import React, { Component } from "react";
 import Meme from "../../components/meme/MemeComponent";
 import "./Profile.css";
@@ -120,6 +124,7 @@ class Profile extends Component {
 
         <ScrollTopArrow />
 
+        {/*the user gets a second chance to the decide if he wants to delete the meme or not*/}
         <Modal show={show} onHide={this.handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>Are you sure about that?</Modal.Title>

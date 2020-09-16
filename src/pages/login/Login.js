@@ -1,3 +1,6 @@
+//the login page which serves just its only purpose, allow the user to log in the website
+//the user enters his credentials and is automatically logged in
+
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
@@ -30,6 +33,7 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <Form onSubmit={(evt) => this.handleSubmit(evt)}>
+          {/*the place where the user places his username*/}
           <Form.Group controlId="formGroupUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -39,6 +43,7 @@ export default class Login extends Component {
               onChange={(evt) => this.setState({ username: evt.target.value })}
             />
           </Form.Group>
+          {/*the place where the user places his password*/}
           <Form.Group controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -48,6 +53,7 @@ export default class Login extends Component {
               onChange={(evt) => this.setState({ password: evt.target.value })}
             />
           </Form.Group>
+          {/*the button that submits the users' credentials*/}
           <Button variant="primary" type="submit">
             Login
           </Button>
