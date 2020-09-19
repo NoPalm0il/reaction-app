@@ -46,7 +46,7 @@ export default class Politics extends React.Component {
             />
           ))}
         </ListGroup>
-        <div class="advert">
+        <div className="advert">
           <img
           alt="advert"
             src="https://miro.medium.com/max/360/1*ibN0ptxrg6LkZ5DZbKv2YA.png"

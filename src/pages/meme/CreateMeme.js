@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import memeService from "../../services/meme";
 import AuthContext from "../../configs/authContext";
+import "./Meme.css";
 
 //the page in which the user gets the privilege to add a meme to the website
 //first he chooses a title, then a category, followed by the meme itself and then he adds the meme to the database
